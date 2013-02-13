@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Aflevering1opgave2 : Opgave 2" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Aflevering1opgave2</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/thegeniusduke/Aflevering1Opgave2">View on GitHub</a>
+
+          <h1 id="project_title">Aflevering1opgave2</h1>
+          <h2 id="project_tagline">Opgave 2</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/thegeniusduke/Aflevering1Opgave2/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/thegeniusduke/Aflevering1Opgave2/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>&lt;?xml version="1.0" encoding="UTF-8"?&gt; 
+</p>
+
+<pre><code>&lt;!--  Command/query arguments --&gt; 
+&lt;element name="sellItems" type="w:sellItems"/&gt; 
+&lt;complexType name="sellItems"&gt; 
+    &lt;all&gt; 
+        &lt;element ref="w:shopKey"/&gt; 
+        &lt;element ref="w:itemID"/&gt; 
+        &lt;element ref="w:customerID"/&gt; 
+        &lt;element ref="w:saleAmount"/&gt; 
+    &lt;/all&gt; 
+&lt;/complexType&gt; 
+
+&lt;element name="adjustItemStock" type="w:adjustItemStock"/&gt; 
+&lt;complexType name="adjustItemStock"&gt; 
+    &lt;all&gt; 
+        &lt;element ref="w:shopKey"/&gt; 
+        &lt;element ref="w:itemID"/&gt; 
+        &lt;element name="adjustment" type="integer"/&gt; 
+    &lt;/all&gt; 
+&lt;/complexType&gt; 
+
+&lt;element name="modifyItem" type="w:modifyItem"/&gt; 
+&lt;complexType name="modifyItem"&gt; 
+       &lt;!-- fixme: missing --&gt; 
+&lt;/complexType&gt; 
+
+&lt;element name="login" type="w:login"/&gt; 
+&lt;complexType name="login"&gt; 
+    &lt;all&gt; 
+        &lt;element ref="w:customerName"/&gt; 
+        &lt;element ref="w:customerPass"/&gt; 
+    &lt;/all&gt; 
+&lt;/complexType&gt; 
+
+&lt;element name="createItem" type="w:createItem"/&gt; 
+&lt;complexType name="createItem"&gt; 
+    &lt;all&gt; 
+        &lt;element ref="w:shopKey"/&gt; 
+        &lt;element ref="w:itemName"/&gt; 
+    &lt;/all&gt; 
+&lt;/complexType&gt; 
+
+&lt;element name="createCustomer" type="w:createCustomer"/&gt; 
+&lt;complexType name="createCustomer"&gt; 
+    &lt;all&gt; 
+        &lt;element ref="w:shopKey"/&gt; 
+        &lt;element ref="w:customerName"/&gt; 
+        &lt;element ref="w:customerPass"/&gt; 
+    &lt;/all&gt; 
+&lt;/complexType&gt; 
+
+&lt;!--  Command responses --&gt; 
+&lt;element name="createCustomerResponse" type="w:createCustomerResponse"/&gt; 
+&lt;complexType name="createCustomerResponse"&gt; 
+    &lt;choice&gt; 
+        &lt;element ref="w:customerID"/&gt; 
+        &lt;element name="usernameTaken" type="w:empty"/&gt; 
+    &lt;/choice&gt; 
+&lt;/complexType&gt; 
+&lt;element name="saleResponse" type="w:saleResponse"/&gt; 
+&lt;complexType name="saleResponse"&gt; 
+    &lt;choice&gt; 
+        &lt;element name="ok" type="w:empty"/&gt; 
+        &lt;element name="itemSoldOut" type="w:empty"/&gt; 
+        &lt;element name="error" type="w:empty"/&gt; 
+    &lt;/choice&gt; 
+&lt;/complexType&gt; 
+&lt;element name="loginResponse" type="w:loginResponse"/&gt; 
+&lt;complexType name="loginResponse"&gt; 
+    &lt;all&gt; 
+        &lt;element ref="w:customerID"/&gt; 
+        &lt;element ref="w:customerName"/&gt; 
+    &lt;/all&gt; 
+&lt;/complexType&gt; 
+
+&lt;!--  Other stuff --&gt; 
+&lt;complexType name="empty"&gt; 
+    &lt;sequence/&gt; 
+&lt;/complexType&gt; 
+&lt;element name="items" type="w:items"/&gt; 
+&lt;complexType name="items"&gt; 
+    &lt;sequence minOccurs="0" maxOccurs="unbounded"&gt; 
+        &lt;element ref="w:item"/&gt; 
+    &lt;/sequence&gt; 
+&lt;/complexType&gt; 
+&lt;element name="shops" type="w:shops"/&gt; 
+&lt;complexType name="shops"&gt; 
+    &lt;sequence minOccurs="0" maxOccurs="unbounded"&gt; 
+        &lt;element ref="w:shop"/&gt; 
+    &lt;/sequence&gt; 
+&lt;/complexType&gt; 
+&lt;element name="sales" type="w:sales"/&gt; 
+&lt;complexType name="sales"&gt; 
+    &lt;sequence minOccurs="0" maxOccurs="unbounded"&gt; 
+        &lt;element ref="w:sale"/&gt; 
+    &lt;/sequence&gt; 
+&lt;/complexType&gt; 
+&lt;element name="customers" type="w:customers"/&gt; 
+&lt;complexType name="customers"&gt; 
+    &lt;sequence minOccurs="0" maxOccurs="unbounded"&gt; 
+        &lt;element ref="w:customer"/&gt; 
+    &lt;/sequence&gt; 
+&lt;/complexType&gt; 
+
+&lt;element name="item" type="w:item"/&gt; 
+&lt;complexType name="item"&gt; 
+    &lt;all&gt; 
+        &lt;element ref="w:itemID"/&gt; 
+        &lt;element ref="w:itemName"/&gt; 
+        &lt;element ref="w:itemURL"/&gt; 
+        &lt;element ref="w:itemPrice"/&gt; 
+        &lt;element ref="w:itemStock"/&gt; 
+        &lt;element ref="w:itemDescription"/&gt; 
+    &lt;/all&gt; 
+&lt;/complexType&gt; 
+
+&lt;element name="shop" type="w:shop"/&gt; 
+&lt;complexType name="shop"&gt; 
+    &lt;all&gt; 
+        &lt;element ref="w:shopID"/&gt;
+        &lt;element ref="w:shopName"/&gt; 
+        &lt;element ref="w:shopURL"/&gt; 
+    &lt;/all&gt; 
+&lt;/complexType&gt; 
+
+&lt;element name="sale" type="w:sale"/&gt; 
+&lt;complexType name="sale"&gt; 
+    &lt;all&gt; 
+        &lt;element ref="w:saleTime"/&gt; 
+        &lt;element ref="w:saleAmount"/&gt; 
+        &lt;element ref="w:shopID"/&gt; 
+        &lt;element ref="w:itemID"/&gt; 
+        &lt;element ref="w:customerID"/&gt; 
+        &lt;element ref="w:saleItemPrice"/&gt; 
+    &lt;/all&gt; 
+&lt;/complexType&gt; 
+
+&lt;element name="customer" type="w:customer"/&gt; 
+&lt;complexType name="customer"&gt; 
+    &lt;all&gt; 
+        &lt;element ref="w:customerID" /&gt; 
+        &lt;element ref="w:customerName" /&gt; 
+    &lt;/all&gt; 
+&lt;/complexType&gt; 
+
+&lt;simpleType name="simpleText"&gt; 
+    &lt;restriction base="string"&gt; 
+        &lt;pattern value="(\p{L}|\p{N}|_|-|\.)*"&gt;&lt;/pattern&gt; 
+    &lt;/restriction&gt; 
+&lt;/simpleType&gt; 
+&lt;element name="customerName" type="w:customerName"/&gt; 
+&lt;simpleType name="customerName"&gt; 
+    &lt;restriction base="w:simpleText"&gt; 
+        &lt;minLength value="2"/&gt; 
+        &lt;maxLength value="20"/&gt; 
+    &lt;/restriction&gt; 
+&lt;/simpleType&gt; 
+
+&lt;element name="customerPass" type="w:customerPass"/&gt; 
+&lt;simpleType name="customerPass"&gt; 
+    &lt;restriction base="w:simpleText"&gt; 
+        &lt;minLength value="3"/&gt; 
+        &lt;maxLength value="20"/&gt; 
+    &lt;/restriction&gt; 
+&lt;/simpleType&gt; 
+
+&lt;element name="itemID" type="nonNegativeInteger"/&gt; 
+&lt;element name="itemName" type="string"/&gt; 
+&lt;element name="itemURL" type="anyURI"/&gt; 
+&lt;element name="itemPrice" type="nonNegativeInteger"/&gt; 
+&lt;element name="itemStock" type="nonNegativeInteger"/&gt; 
+&lt;element name="itemDescription"&gt; 
+      &lt;any minOccurs="0"/&gt; &lt;!-- fixme: imprecise --&gt; 
+    &lt;/element&gt; 
+
+&lt;element name="shopKey" type="string"/&gt; 
+&lt;element name="shopID" type="nonNegativeInteger"/&gt; 
+&lt;element name="shopName" type="string"/&gt; 
+&lt;element name="shopURL" type="anyURI"/&gt; 
+
+&lt;!-- Time is in miliseconds since Jan 1 1970 (same as java.lang.Date expects) --&gt; 
+&lt;element name="saleTime" type="nonNegativeInteger"/&gt; 
+&lt;element name="saleAmount" type="nonNegativeInteger"/&gt; 
+
+&lt;element name="customerID" type="nonNegativeInteger"/&gt; 
+&lt;element name="saleItemPrice" type="nonNegativeInteger"/&gt; 
+</code></pre>
+
+<p> </p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Aflevering1opgave2 maintained by <a href="https://github.com/thegeniusduke">thegeniusduke</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
